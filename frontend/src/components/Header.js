@@ -39,13 +39,13 @@ export const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 data-testid={`nav-link-${link.path.replace('/', '') || 'home'}`}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-3 xl:px-4 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${
                   location.pathname === link.path
                     ? 'bg-slate-900 text-white'
                     : 'text-slate-700 hover:bg-slate-100'
