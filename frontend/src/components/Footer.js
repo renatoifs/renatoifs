@@ -6,10 +6,23 @@ export const Footer = () => {
   return (
     <footer className="bg-slate-900 text-white mt-auto">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Column 1: Affiliations */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Column 1: Primary Affiliation */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Affiliations</h3>
+            <img
+              src="https://customer-assets.emergentagent.com/job_prof-porto/artifacts/cqn8r87d_Logofmup.jpg"
+              alt="FMUP"
+              className="h-16 w-auto object-contain mb-4 brightness-0 invert"
+            />
+            <p className="text-sm text-slate-300 leading-relaxed">
+              Faculty of Medicine<br />
+              University of Porto
+            </p>
+          </div>
+
+          {/* Column 2: Other Affiliations */}
+          <div>
+            <h3 className="font-semibold text-lg mb-4">Research Units</h3>
             <div className="space-y-3 text-sm text-slate-300">
               <div className="flex items-center space-x-3">
                 <img
@@ -35,7 +48,7 @@ export const Footer = () => {
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
+          {/* Column 3: Academic Profiles */}
           <div>
             <h3 className="font-semibold text-lg mb-4">Academic Profiles</h3>
             <ul className="space-y-2 text-sm text-slate-300">
@@ -57,6 +70,16 @@ export const Footer = () => {
                   className="hover:text-white transition-colors"
                 >
                   Scopus
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://scholar.google.com/citations?hl=en&user=hw4VpSEAAAAJ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  Google Scholar
                 </a>
               </li>
               <li>
@@ -102,16 +125,26 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 3: Contact */}
+          {/* Column 4: Contact */}
           <div>
             <h3 className="font-semibold text-lg mb-4">Contact</h3>
             <div className="space-y-2 text-sm text-slate-300">
-              <p>
-                Faculty of Medicine<br />
-                University of Porto<br />
-                Porto, Portugal
+              <p className="leading-relaxed">
+                Rua Doutor Plácido da Costa<br />
+                4200-450 Porto<br />
+                Portugal
               </p>
-              <p>
+              <p className="mt-3">
+                <a
+                  href="tel:+351220426913"
+                  className="hover:text-white transition-colors"
+                >
+                  Phone: (+351) 220 426 913
+                </a>
+                <br />
+                <span className="text-slate-400">Ext: 26913</span>
+              </p>
+              <p className="mt-3">
                 <a
                   href="mailto:rsilva@med.up.pt"
                   className="hover:text-white transition-colors"
