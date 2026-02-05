@@ -45,19 +45,39 @@ export const TeachingPage = () => {
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {areas.map((area, index) => (
-                <div
-                  key={index}
-                  className="flex items-start space-x-4 p-5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-slate-300 transition-all"
-                >
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center text-sm font-bold">
-                    {index + 1}
+              {/* Left Column */}
+              <div className="space-y-6">
+                {areas.slice(0, Math.ceil(areas.length / 2)).map((area, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start space-x-4 p-5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-slate-300 transition-all"
+                  >
+                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center text-sm font-bold">
+                      {index + 1}
+                    </div>
+                    <p className="text-base text-slate-800 font-medium leading-relaxed pt-1">
+                      {area}
+                    </p>
                   </div>
-                  <p className="text-base text-slate-800 font-medium leading-relaxed pt-1">
-                    {area}
-                  </p>
-                </div>
-              ))}
+                ))}
+              </div>
+
+              {/* Right Column */}
+              <div className="space-y-6">
+                {areas.slice(Math.ceil(areas.length / 2)).map((area, index) => (
+                  <div
+                    key={index + Math.ceil(areas.length / 2)}
+                    className="flex items-start space-x-4 p-5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 hover:border-slate-300 transition-all"
+                  >
+                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center text-sm font-bold">
+                      {index + Math.ceil(areas.length / 2) + 1}
+                    </div>
+                    <p className="text-base text-slate-800 font-medium leading-relaxed pt-1">
+                      {area}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
