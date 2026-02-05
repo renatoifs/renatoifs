@@ -8,58 +8,18 @@ export const Footer = () => {
   return (
     <footer className="bg-slate-900 text-white mt-auto">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Column 1: Primary Affiliation */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Column 1: Primary Info */}
           <div>
-            <img
-              src="https://customer-assets.emergentagent.com/job_prof-porto/artifacts/8z0u74th_logoFMUP_geral.png"
-              alt="FMUP"
-              className="h-20 w-auto object-contain mb-4"
-            />
+            <h3 className="font-semibold text-lg mb-4">Renato Ferreira da Silva</h3>
             <p className="text-sm text-slate-300 leading-relaxed">
               Faculty of Medicine<br />
-              University of Porto
+              University of Porto<br />
+              Porto, Portugal
             </p>
           </div>
 
-          {/* Column 2: Institutional Affiliations */}
-          <div>
-            <h3 className="font-semibold text-lg mb-4">
-              {language === 'en' ? 'Institutional Affiliations' : 'Afiliações Institucionais'}
-            </h3>
-            <div className="space-y-4 text-sm text-slate-300">
-              <div className="flex items-center space-x-3">
-                <img
-                  src="https://customer-assets.emergentagent.com/job_prof-porto/artifacts/8z0u74th_logoFMUP_geral.png"
-                  alt="FMUP"
-                  className="h-10 w-auto object-contain"
-                />
-              </div>
-              <div className="flex items-center space-x-3">
-                <img
-                  src="https://customer-assets.emergentagent.com/job_64a4d56c-46bc-4206-a4e5-3561919adcd4/artifacts/ny8d90k6_UFPorto_logo.png"
-                  alt="University of Porto"
-                  className="h-10 w-auto object-contain"
-                />
-              </div>
-              <div className="flex items-center space-x-3">
-                <img
-                  src="https://customer-assets.emergentagent.com/job_64a4d56c-46bc-4206-a4e5-3561919adcd4/artifacts/b0778cr6_Logo.Medcids-e1644239830105.png"
-                  alt="MEDCIDS"
-                  className="h-10 w-auto object-contain"
-                />
-              </div>
-              <div className="flex items-center space-x-3">
-                <img
-                  src="https://customer-assets.emergentagent.com/job_64a4d56c-46bc-4206-a4e5-3561919adcd4/artifacts/fk5av09d_RISE_logo.png"
-                  alt="RISE Health"
-                  className="h-10 w-auto object-contain"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Column 3: Academic Profiles */}
+          {/* Column 2: Academic Profiles */}
           <div>
             <h3 className="font-semibold text-lg mb-4">Academic Profiles</h3>
             <ul className="space-y-2 text-sm text-slate-300">
@@ -136,7 +96,7 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 4: Contact */}
+          {/* Column 3: Contact */}
           <div>
             <h3 className="font-semibold text-lg mb-4">Contact</h3>
             <div className="space-y-2 text-sm text-slate-300">
