@@ -28,17 +28,6 @@ export const ResearchPage = () => {
     'Estudos de vigilância pós-comercialização'
   ];
 
-  const methodologies = [
-    'PRISMA Guidelines',
-    'Cochrane Methodology',
-    'ICH-GCP Standards',
-    'CIOMS Recommendations',
-    'EMA Guidance',
-    'WHO-UMC Criteria',
-    'Bradford Hill Criteria',
-    'Real-World Evidence Framework'
-  ];
-
   const { language } = useLanguage();
   const areas = language === 'en' ? researchAreas : researchAreasPT;
 
@@ -53,45 +42,28 @@ export const ResearchPage = () => {
           <div className="h-1 w-24 bg-slate-900 rounded"></div>
         </div>
 
-        {/* Research Areas - Simple List */}
-        <section className="mb-16">
+        {/* Research Areas - Friendly Cards */}
+        <section>
           <h2 className="text-2xl font-bold text-slate-900 mb-8">
             {t('research.areasTitle')}
           </h2>
 
-          <div className="bg-white rounded-2xl p-8 lg:p-12 shadow-sm border border-slate-100">
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {areas.map((area, index) => (
-                <li
-                  key={index}
-                  className="flex items-start space-x-3 p-4 rounded-lg hover:bg-slate-50 transition-colors"
-                >
-                  <div className="flex-shrink-0 w-2 h-2 rounded-full bg-slate-900 mt-2"></div>
-                  <p className="text-base text-slate-700 font-medium leading-relaxed">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {areas.map((area, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl p-6 shadow-sm border border-slate-200 hover:shadow-md hover:border-slate-300 transition-all group"
+              >
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center text-sm font-bold group-hover:bg-slate-800 transition-colors">
+                    {index + 1}
+                  </div>
+                  <p className="text-base text-slate-800 font-medium leading-relaxed pt-1">
                     {area}
                   </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        {/* Methodological Toolkit */}
-        <section>
-          <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-8 lg:p-12 text-white">
-            <h2 className="text-2xl font-bold mb-6">
-              {t('research.methodsTitle')}
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {methodologies.map((method, index) => (
-                <div
-                  key={index}
-                  className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 text-sm font-medium hover:bg-white/20 transition-colors"
-                >
-                  {method}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </section>
       </div>
