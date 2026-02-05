@@ -15,7 +15,8 @@ function updateContent() {
     elements.forEach(el => {
         const text = el.getAttribute(`data-${currentLang}`);
         if (text) {
-            el.textContent = text;
+            // Use innerHTML to preserve HTML tags like <strong>
+            el.innerHTML = text;
         }
     });
     document.documentElement.lang = currentLang;
