@@ -217,6 +217,131 @@ async def submit_contact_form(form: ContactForm):
         raise HTTPException(status_code=500, detail="Failed to submit contact form")
 
 
+# CMS/Admin Endpoints
+@api_router.post("/admin/login")
+async def admin_login(login: LoginRequest):
+    """Admin login endpoint"""
+    # Default admin credentials (change in production via environment variables)
+    ADMIN_USERNAME = os.environ.get('ADMIN_USERNAME', 'admin')
+    ADMIN_PASSWORD_HASH = os.environ.get('ADMIN_PASSWORD_HASH', get_password_hash('changeme123'))
+    
+    if login.username != ADMIN_USERNAME:
+        raise HTTPException(status_code=401, detail="Invalid credentials")
+    
+    if not verify_password(login.password, ADMIN_PASSWORD_HASH):
+        raise HTTPException(status_code=401, detail="Invalid credentials")
+    
+    access_token = create_access_token(data={"sub": login.username})
+    return {"access_token": access_token, "token_type": "bearer"}
+
+@api_router.get("/admin/content")
+async def get_content(username: str = Depends(verify_token)):
+    """Get all content for editing"""
+    try:
+        import json
+        content_file = ROOT_DIR / 'data' / 'content.json'
+        with open(content_file, 'r', encoding='utf-8') as f:
+            content = json.load(f)
+        return content
+    except Exception as e:
+        logging.error(f"Error fetching content: {e}")
+        raise HTTPException(status_code=500, detail="Failed to fetch content")
+
+@api_router.put("/admin/content")
+async def update_content(update: ContentUpdate, username: str = Depends(verify_token)):
+    """Update specific content field"""
+    try:
+        import json
+        content_file = ROOT_DIR / 'data' / 'content.json'
+        
+        # Read current content
+        with open(content_file, 'r', encoding='utf-8') as f:
+            content = json.load(f)
+        
+        # Update the specific field
+        if update.section not in content:
+            content[update.section] = {}
+        if update.language not in content[update.section]:
+            content[update.section][update.language] = {}
+        
+        content[update.section][update.language][update.field] = update.value
+        
+        # Save version to database
+        version_doc = {
+            'id': str(uuid.uuid4()),
+            'section': update.section,
+            'language': update.language,
+            'field': update.field,
+            'old_value': content[update.section][update.language].get(update.field, ''),
+            'new_value': update.value,
+            'author': username,
+            'timestamp': datetime.now(timezone.utc).isoformat()
+        }
+        await db.content_versions.insert_one(version_doc)
+        
+        # Write updated content
+        with open(content_file, 'w', encoding='utf-8') as f:
+            json.dump(content, f, indent=2, ensure_ascii=False)
+        
+        return {"message": "Content updated successfully", "version_id": version_doc['id']}
+    except Exception as e:
+        logging.error(f"Error updating content: {e}")
+        raise HTTPException(status_code=500, detail="Failed to update content")
+
+@api_router.get("/admin/content/versions")
+async def get_content_versions(username: str = Depends(verify_token), limit: int = 50):
+    """Get content version history"""
+    try:
+        versions = await db.content_versions.find({}, {"_id": 0}).sort("timestamp", -1).limit(limit).to_list(limit)
+        return versions
+    except Exception as e:
+        logging.error(f"Error fetching versions: {e}")
+        raise HTTPException(status_code=500, detail="Failed to fetch versions")
+
+@api_router.post("/admin/content/revert/{version_id}")
+async def revert_content_version(version_id: str, username: str = Depends(verify_token)):
+    """Revert to a specific version"""
+    try:
+        import json
+        
+        # Get the version
+        version = await db.content_versions.find_one({"id": version_id}, {"_id": 0})
+        if not version:
+            raise HTTPException(status_code=404, detail="Version not found")
+        
+        content_file = ROOT_DIR / 'data' / 'content.json'
+        
+        # Read current content
+        with open(content_file, 'r', encoding='utf-8') as f:
+            content = json.load(f)
+        
+        # Revert the specific field
+        content[version['section']][version['language']][version['field']] = version['old_value']
+        
+        # Save revert as new version
+        revert_doc = {
+            'id': str(uuid.uuid4()),
+            'section': version['section'],
+            'language': version['language'],
+            'field': version['field'],
+            'old_value': version['new_value'],
+            'new_value': version['old_value'],
+            'author': username,
+            'timestamp': datetime.now(timezone.utc).isoformat(),
+            'revert_from': version_id
+        }
+        await db.content_versions.insert_one(revert_doc)
+        
+        # Write updated content
+        with open(content_file, 'w', encoding='utf-8') as f:
+            json.dump(content, f, indent=2, ensure_ascii=False)
+        
+        return {"message": "Content reverted successfully", "version_id": revert_doc['id']}
+    except Exception as e:
+        logging.error(f"Error reverting content: {e}")
+        raise HTTPException(status_code=500, detail="Failed to revert content")
+
+
 # Include the router in the main app
 app.include_router(api_router)
 
