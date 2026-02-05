@@ -95,9 +95,17 @@ export const ContactPage = () => {
                 </h3>
               </div>
               <p className="text-sm text-slate-700 leading-relaxed">
-                Faculty of Medicine<br />
-                University of Porto<br />
-                {t('contact.locationText')}
+                Rua Doutor Plácido da Costa<br />
+                4200-450 Porto<br />
+                Portugal
+              </p>
+              <p className="text-sm text-slate-700 mt-3">
+                <span className="font-medium">Phone:</span>{' '}
+                <a href="tel:+351220426913" className="text-blue-600 hover:text-blue-700">
+                  (+351) 220 426 913
+                </a>
+                <br />
+                <span className="text-slate-500">Ext: 26913</span>
               </p>
             </div>
           </div>
