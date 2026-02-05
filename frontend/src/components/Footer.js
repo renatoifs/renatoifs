@@ -1,7 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { language } = useLanguage();
 
   return (
     <footer className="bg-slate-900 text-white mt-auto">
