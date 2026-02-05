@@ -104,10 +104,18 @@ export const HomePage = () => {
         </div>
       </section>
 
-      {/* Institutional Logos */}
-      <section className="py-16 bg-white">
+      {/* Institutional Logos - White Section */}
+      <section className="py-16 bg-white border-b border-slate-200">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h3 className="text-center text-sm font-semibold text-slate-600 uppercase tracking-wide mb-8">
+            Institutional Affiliations
+          </h3>
           <div className="flex flex-wrap items-center justify-center gap-12">
+            <img
+              src="https://customer-assets.emergentagent.com/job_prof-porto/artifacts/8z0u74th_logoFMUP_geral.png"
+              alt="FMUP"
+              className="h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+            />
             <img
               src="https://customer-assets.emergentagent.com/job_64a4d56c-46bc-4206-a4e5-3561919adcd4/artifacts/ny8d90k6_UFPorto_logo.png"
               alt="University of Porto"
