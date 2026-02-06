@@ -10,6 +10,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">RFS</a>
+            <div class="nav-links">
+                <a href="#biography" data-pt="Biografia" data-en="Biography">Biografia</a>
+                <a href="#memberships" data-pt="Associações" data-en="Associations">Associações</a>
+                <a href="#affiliations" data-pt="Afiliações" data-en="Affiliations">Afiliações</a>
+                <a href="#contact" data-pt="Contacto" data-en="Contact">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
     <!-- Language Toggle -->
     <button class="lang-toggle" onclick="toggleLanguage()" aria-label="Toggle language">
         <span id="lang-indicator">EN</span>
@@ -106,7 +119,7 @@
     </section>
 
     <!-- Biography Section -->
-    <section class="biography">
+    <section class="biography" id="biography">
         <div class="biography-container">
             <h2 data-pt="Biografia" data-en="Biography">Biografia</h2>
             <div class="bio-content">
@@ -120,7 +133,7 @@
     </section>
 
     <!-- Memberships Section -->
-    <section class="memberships">
+    <section class="memberships" id="memberships">
         <div class="memberships-container">
             <h2 data-pt="Associações e Redes Profissionais" data-en="Professional Associations & Networks">Associações e Redes Profissionais</h2>
             <ul class="membership-list">
@@ -136,7 +149,7 @@
     </section>
 
     <!-- Institutional Affiliations -->
-    <section class="affiliations">
+    <section class="affiliations" id="affiliations">
         <div class="affiliations-container">
             <h3 class="aff-title" data-pt="Afiliações Institucionais" data-en="Institutional Affiliations">Afiliações Institucionais</h3>
             <div class="logos-row">
@@ -157,7 +170,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact">
+    <section class="contact" id="contact">
         <div class="contact-container">
             <h2 data-pt="Contacto" data-en="Contact">Contacto</h2>
             <div class="contact-grid">
