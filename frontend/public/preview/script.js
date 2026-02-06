@@ -30,6 +30,9 @@ function updateLangIndicator() {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
+    // Ensure page starts at top
+    window.scrollTo(0, 0);
+    
     const storedLang = localStorage.getItem('preferredLang');
     if (storedLang && (storedLang === 'pt' || storedLang === 'en')) {
         currentLang = storedLang;
