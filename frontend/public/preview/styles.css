@@ -95,18 +95,18 @@ img {
 /* === LANGUAGE TOGGLE === */
 .lang-toggle {
     position: fixed;
-    top: 1.5rem;
+    top: 0.85rem;
     right: 1.5rem;
     background: var(--slate-900);
     color: var(--white);
     border: none;
-    padding: 0.625rem 1.25rem;
+    padding: 0.5rem 1rem;
     border-radius: 2rem;
     font-size: 0.875rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    z-index: 100;
+    z-index: 1001;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
