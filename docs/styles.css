@@ -169,6 +169,86 @@ img {
     background: var(--slate-50);
 }
 
+/* === LANDING SECTION (COVER) === */
+.landing {
+    background: var(--slate-900);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 2rem 4rem;
+    text-align: center;
+}
+
+.landing-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.landing-subtitle {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--slate-400);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+}
+
+.landing-title {
+    font-family: var(--font-serif);
+    font-size: 4.5rem;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.landing-tagline {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--slate-300);
+    line-height: 1.6;
+    margin-bottom: 3rem;
+}
+
+.landing-scroll {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--slate-400);
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: color 0.3s ease;
+}
+
+.landing-scroll:hover {
+    color: var(--white);
+}
+
+.landing-scroll i {
+    font-size: 1rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(8px);
+    }
+    60% {
+        transform: translateY(4px);
+    }
+}
+
 /* === HERO SECTION === */
 .hero {
     background: var(--gray-100);
@@ -599,6 +679,14 @@ footer p {
 
 /* === RESPONSIVE === */
 @media (max-width: 1024px) {
+    .landing-title {
+        font-size: 3.5rem;
+    }
+
+    .landing-tagline {
+        font-size: 1.125rem;
+    }
+
     .hero-container {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -607,6 +695,7 @@ footer p {
     .hero-photo {
         justify-content: center;
         order: 1;
+        padding-top: 0;
     }
 
     .hero-info {
@@ -649,6 +738,18 @@ footer p {
 }
 
 @media (max-width: 768px) {
+    .landing {
+        padding: 5rem 1.5rem 3rem;
+    }
+
+    .landing-title {
+        font-size: 2.75rem;
+    }
+
+    .landing-tagline {
+        font-size: 1rem;
+    }
+
     .navbar {
         padding: 0 1rem;
     }
@@ -682,7 +783,7 @@ footer p {
     }
 
     .logo-link img {
-        height: 40px;
+        height: 50px;
     }
 
     .biography h2,
@@ -701,6 +802,18 @@ footer p {
 }
 
 @media (max-width: 480px) {
+    .landing-title {
+        font-size: 2.25rem;
+    }
+
+    .landing-subtitle {
+        font-size: 0.75rem;
+    }
+
+    .landing-tagline {
+        font-size: 0.9375rem;
+    }
+
     .hero-info {
         padding: 0.5rem 1rem 1.5rem;
     }
