@@ -171,25 +171,35 @@ img {
 
 /* === LANDING SECTION (COVER) === */
 .landing {
-    background: var(--slate-900);
+    background: url('assets/landing-bg.png') center center / cover no-repeat;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 6rem 2rem 4rem;
     text-align: center;
+    position: relative;
+}
+
+.landing::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.75);
 }
 
 .landing-container {
     max-width: 900px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .landing-subtitle {
     font-family: var(--font-sans);
     font-size: 0.875rem;
     font-weight: 500;
-    color: var(--slate-400);
+    color: var(--slate-600);
     text-transform: uppercase;
     letter-spacing: 0.15em;
     margin-bottom: 1.5rem;
@@ -199,18 +209,9 @@ img {
     font-family: var(--font-serif);
     font-size: 4.5rem;
     font-weight: 400;
-    color: var(--white);
+    color: var(--slate-900);
     line-height: 1.1;
-    margin-bottom: 1.5rem;
-}
-
-.landing-tagline {
-    font-family: var(--font-sans);
-    font-size: 1.25rem;
-    font-weight: 300;
-    color: var(--slate-300);
-    line-height: 1.6;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
 }
 
 .landing-scroll {
@@ -218,7 +219,7 @@ img {
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    color: var(--slate-400);
+    color: var(--slate-600);
     text-decoration: none;
     font-family: var(--font-sans);
     font-size: 0.8125rem;
@@ -229,11 +230,11 @@ img {
 }
 
 .landing-scroll:hover {
-    color: var(--white);
+    color: var(--slate-900);
 }
 
 .landing-scroll i {
-    font-size: 1rem;
+    font-size: 1.25rem;
     animation: bounce 2s infinite;
 }
 
